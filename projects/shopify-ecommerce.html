@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify E-commerce Optimization | CHU TRIEU CHINH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/shared.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-color': '#f8f8f4', 'primary-text': '#2d3436', 'secondary-text': '#636e72',
+                        'accent-wood': '#a67c52', 'accent-moss': '#4a5d4e', 'accent-earth': '#c5a059', 'card-bg': '#ffffff',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { 'custom': '12px' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased" data-theme="light">
+    <div class="scroll-progress"></div>
+    <nav class="nav-menu always-visible" id="navMenu">
+        <div class="container max-w-5xl mx-auto px-4 sm:px-5 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="back-btn no-print">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span data-en="Back to Resume" data-vi="Quay lại CV">Back to Resume</span>
+                </a>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="langToggle" class="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-lg border-2 border-accent-moss text-accent-moss hover:bg-accent-moss hover:text-white transition-all">EN</button>
+                    <button id="darkModeToggle" class="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 transition-all" aria-label="Toggle dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container max-w-5xl mx-auto p-5 md:p-10">
+        <!-- Hero -->
+        <div class="project-hero mb-10">
+            <p class="text-sm font-semibold text-accent-wood uppercase tracking-wider mb-2">WIR GROUP</p>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-accent-moss mb-2" data-en="Shopify E-commerce Optimization" data-vi="Tối ưu hóa Cửa hàng Shopify">Shopify E-commerce Optimization</h1>
+            <p class="text-secondary-text" data-en="Senior Backend / E-Commerce Engineer · Jun 2024 – May 2025" data-vi="Kỹ sư Backend / TMĐT Cao cấp · Tháng 6/2024 – Tháng 5/2025">Senior Backend / E-Commerce Engineer · Jun 2024 – May 2025</p>
+            <div class="flex flex-wrap gap-3 mt-4">
+                <a href="https://smeg-point.de" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-moss text-white font-medium text-sm hover:bg-accent-wood transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    smeg-point.de
+                </a>
+                <a href="https://flagship-berlin.de" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-moss text-white font-medium text-sm hover:bg-accent-wood transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    flagship-berlin.de
+                </a>
+                <a href="https://haus-adler.de" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-moss text-white font-medium text-sm hover:bg-accent-wood transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    haus-adler.de
+                </a>
+                <a href="https://wir-aesthetics.de" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-moss text-white font-medium text-sm hover:bg-accent-wood transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    wir-aesthetics.de
+                </a>
+            </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                </div>
+                <div class="metric-value">+<span class="counter" data-target="3">0</span>%</div>
+                <div class="metric-label" data-en="Conversion Rate" data-vi="Tỷ lệ chuyển đổi">Conversion Rate</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="metric-value">+<span class="counter" data-target="30">0</span>%</div>
+                <div class="metric-label" data-en="Returning Customers" data-vi="Khách quay lại">Returning Customers</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                </div>
+                <div class="metric-value">~75</div>
+                <div class="metric-label" data-en="Performance Score /100" data-vi="Điểm hiệu năng /100">Performance Score /100</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <div class="metric-value">~<span class="counter" data-target="40000">0</span></div>
+                <div class="metric-label" data-en="EUR/month Revenue" data-vi="EUR/tháng Doanh thu">EUR/month Revenue</div>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="card detail-section p-8 mb-6">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span data-en="Project Overview" data-vi="Tổng quan dự án">Project Overview</span>
+            </h3>
+            <p class="text-primary-text leading-relaxed" data-en="Optimized and managed multiple Shopify e-commerce stores targeting European markets. Focused on UI/UX improvements, page speed optimization, SEO enhancements, and mobile responsiveness to drive higher conversion rates and customer retention. Also supported dropshipping development for new market segments." data-vi="Tối ưu và quản lý nhiều cửa hàng Shopify nhắm tới thị trường Châu Âu. Tập trung cải thiện UI/UX, tối ưu tốc độ tải trang, nâng cao SEO và responsive trên mobile để tăng tỷ lệ chuyển đổi và giữ chân khách hàng. Đồng thời hỗ trợ phát triển mô hình dropshipping cho phân khúc thị trường mới.">Optimized and managed multiple Shopify e-commerce stores targeting European markets. Focused on UI/UX improvements, page speed optimization, SEO enhancements, and mobile responsiveness to drive higher conversion rates and customer retention. Also supported dropshipping development for new market segments.</p>
+        </div>
+
+        <!-- Key Contributions -->
+        <div class="card detail-section p-8 mb-6">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span data-en="Key Contributions" data-vi="Đóng góp chính">Key Contributions</span>
+            </h3>
+            <div class="space-y-3">
+                <div class="contribution-item">
+                    <div class="flex items-start gap-3">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-blue-100 text-blue-700 mt-0.5 shrink-0">Frontend</span>
+                        <p class="text-primary-text" data-en="Optimized multiple Shopify stores (smeg-point.de, flagship-berlin.de, haus-adler.de) with UI/UX upgrades and mobile responsiveness." data-vi="Tối ưu nhiều cửa hàng Shopify (smeg-point.de, flagship-berlin.de, haus-adler.de) với nâng cấp UI/UX và responsive mobile.">Optimized multiple Shopify stores (smeg-point.de, flagship-berlin.de, haus-adler.de) with UI/UX upgrades and mobile responsiveness.</p>
+                    </div>
+                </div>
+                <div class="contribution-item">
+                    <div class="flex items-start gap-3">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-green-100 text-green-700 mt-0.5 shrink-0">SEO</span>
+                        <p class="text-primary-text" data-en="Implemented page speed optimization and SEO improvements, achieving performance scores up to ~75/100." data-vi="Triển khai tối ưu tốc độ tải trang và cải thiện SEO, đạt điểm hiệu năng lên đến ~75/100.">Implemented page speed optimization and SEO improvements, achieving performance scores up to ~75/100.</p>
+                    </div>
+                </div>
+                <div class="contribution-item">
+                    <div class="flex items-start gap-3">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-purple-100 text-purple-700 mt-0.5 shrink-0">E-commerce</span>
+                        <p class="text-primary-text" data-en="Supported dropshipping development for wir-aesthetics.de, expanding into new market segments." data-vi="Hỗ trợ phát triển mô hình dropshipping cho wir-aesthetics.de, mở rộng phân khúc thị trường mới.">Supported dropshipping development for wir-aesthetics.de, expanding into new market segments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="card detail-section p-8 mb-6">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <span data-en="Tech Stack" data-vi="Công nghệ sử dụng">Tech Stack</span>
+            </h3>
+            <div class="flex flex-wrap gap-3">
+                <span class="tech-badge">Shopify</span>
+                <span class="tech-badge">Liquid</span>
+                <span class="tech-badge">HTML/CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">SEO</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-10 no-print">
+            <a href="boxbaer.html" class="project-nav-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <span data-en="Prev: BoxBaer" data-vi="Trước: BoxBaer">Prev: BoxBaer</span>
+            </a>
+            <a href="healthcare-websites.html" class="project-nav-btn">
+                <span data-en="Next: Healthcare Websites" data-vi="Tiếp: Healthcare Websites">Next: Healthcare Websites</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+        </div>
+    </div>
+
+    <footer class="text-center py-8 text-sm text-secondary-text"><p>© 2025 Chu Trieu Chinh</p></footer>
+    <script src="../assets/js/shared.js"></script>
+</body>
+</html>

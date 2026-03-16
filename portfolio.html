@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | CHU TRIEU CHINH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-color': '#f8f8f4',
+                        'primary-text': '#2d3436',
+                        'secondary-text': '#636e72',
+                        'accent-wood': '#a67c52',
+                        'accent-moss': '#4a5d4e',
+                        'accent-earth': '#c5a059',
+                        'card-bg': '#ffffff',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { 'custom': '12px' }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        /* ===== Hero ===== */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #4a5d4e 0%, #2d3436 40%, #a67c52 100%);
+            z-index: 0;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(166,124,82,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(74,93,78,0.2) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2%, -1%) rotate(1deg); }
+            50% { transform: translate(-1%, 2%) rotate(-1deg); }
+            75% { transform: translate(1%, 1%) rotate(0.5deg); }
+        }
+
+        /* Floating shapes */
+        .float-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+            animation: shapeFloat 15s ease-in-out infinite;
+        }
+        .float-shape:nth-child(1) { width: 400px; height: 400px; top: -100px; right: -100px; background: #c5a059; animation-delay: 0s; }
+        .float-shape:nth-child(2) { width: 250px; height: 250px; bottom: -50px; left: 10%; background: #4a5d4e; animation-delay: -5s; }
+        .float-shape:nth-child(3) { width: 180px; height: 180px; top: 30%; left: -50px; background: #a67c52; animation-delay: -10s; }
+
+        @keyframes shapeFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* Typewriter */
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #c5a059;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+        }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #c5a059; } }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* ===== Stats ===== */
+        .stats-bar {
+            background: var(--card-bg);
+            border-top: 3px solid var(--accent-earth);
+            border-bottom: 3px solid var(--accent-earth);
+            position: relative;
+            z-index: 10;
+            margin-top: -60px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 24px 16px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-moss);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* ===== Timeline ===== */
+        .timeline-journey {
+            position: relative;
+            padding: 60px 0;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-earth), var(--accent-moss));
+            transform: translateX(-50%);
+        }
+        .timeline-node {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .timeline-node:nth-child(odd) { flex-direction: row; }
+        .timeline-node:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-node-content {
+            width: 45%;
+            padding: 20px 24px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius, 12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+        }
+        .timeline-node-content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .timeline-node-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-earth);
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 0 0 3px var(--accent-earth);
+            z-index: 2;
+        }
+        .timeline-spacer { width: 10%; }
+
+        @media (max-width: 768px) {
+            .timeline-line { left: 20px; }
+            .timeline-node, .timeline-node:nth-child(even) { flex-direction: row !important; }
+            .timeline-node-content { width: 100%; margin-left: 50px; }
+            .timeline-node-dot { left: 20px; }
+            .timeline-spacer { display: none; }
+        }
+
+        /* ===== Project Cards ===== */
+        .project-showcase-card {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        .project-showcase-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+        }
+        .project-showcase-card:hover .project-explore {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .project-showcase-card.reverse { flex-direction: row-reverse; }
+
+        .project-accent-bar {
+            width: 6px;
+            flex-shrink: 0;
+            background: linear-gradient(to bottom, var(--accent-moss), var(--accent-earth));
+        }
+        .project-showcase-card.reverse .project-accent-bar {
+            background: linear-gradient(to bottom, var(--accent-earth), var(--accent-moss));
+        }
+        .project-card-body {
+            flex: 1;
+            padding: 32px;
+        }
+        .project-company-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: rgba(74,93,78,0.1);
+            color: var(--accent-moss);
+            margin-bottom: 12px;
+        }
+        .project-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--accent-earth);
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: all 0.4s ease;
+        }
+        .project-metric-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(74,93,78,0.08);
+            color: var(--accent-moss);
+        }
+        .project-metric-pill.highlight {
+            background: rgba(197,160,89,0.12);
+            color: var(--accent-earth);
+        }
+        .tech-pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: rgba(166,124,82,0.08);
+            color: var(--accent-wood);
+            border: 1px solid rgba(166,124,82,0.15);
+        }
+
+        @media (max-width: 768px) {
+            .project-showcase-card, .project-showcase-card.reverse { flex-direction: column; }
+            .project-accent-bar { width: 100%; height: 4px; }
+            .project-explore { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ===== Open Source ===== */
+        .oss-card {
+            background: linear-gradient(135deg, rgba(74,93,78,0.05) 0%, rgba(166,124,82,0.05) 100%);
+            border: 1px solid rgba(74,93,78,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.4s ease;
+        }
+        .oss-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: var(--accent-moss);
+        }
+
+        /* ===== Section reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== Dark Mode ===== */
+        [data-theme="dark"] .hero-bg {
+            background: linear-gradient(135deg, #1a2520 0%, #111 40%, #3d2e1a 100%);
+        }
+        [data-theme="dark"] .stats-bar {
+            background: #1e1e1e;
+            border-color: #5a4a2e;
+        }
+        [data-theme="dark"] .timeline-node-content {
+            background: #1e1e1e;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        [data-theme="dark"] .project-showcase-card {
+            background: #1e1e1e;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+        [data-theme="dark"] .oss-card {
+            background: linear-gradient(135deg, rgba(74,93,78,0.1) 0%, rgba(166,124,82,0.1) 100%);
+            border-color: rgba(74,93,78,0.2);
+        }
+        [data-theme="dark"] .project-company-badge {
+            background: rgba(74,93,78,0.2);
+        }
+        [data-theme="dark"] .project-metric-pill {
+            background: rgba(74,93,78,0.15);
+        }
+        [data-theme="dark"] .project-metric-pill.highlight {
+            background: rgba(197,160,89,0.2);
+        }
+        [data-theme="dark"] .tech-pill {
+            background: rgba(166,124,82,0.15);
+            border-color: rgba(166,124,82,0.25);
+        }
+
+        /* Footer CTA */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+        .cta-btn-primary {
+            background: var(--accent-moss);
+            color: white;
+        }
+        .cta-btn-primary:hover {
+            background: var(--accent-wood);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(74,93,78,0.3);
+        }
+        .cta-btn-outline {
+            border: 2px solid var(--accent-moss);
+            color: var(--accent-moss);
+            background: transparent;
+        }
+        .cta-btn-outline:hover {
+            background: var(--accent-moss);
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased" data-theme="light">
+
+    <!-- Top Nav -->
+    <nav class="nav-menu always-visible" id="navMenu" style="background: transparent; box-shadow: none;">
+        <div class="container max-w-6xl mx-auto px-4 sm:px-5 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="inline-flex items-center gap-2 text-white font-semibold text-sm hover:text-accent-earth transition-colors no-print">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span data-en="Back to CV" data-vi="Quay lại CV">Back to CV</span>
+                </a>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="langToggle" class="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-lg border-2 border-white/40 text-white hover:bg-white hover:text-accent-moss transition-all">EN</button>
+                    <button id="darkModeToggle" class="p-1.5 sm:p-2 rounded-lg text-white hover:bg-white/10 transition-all" aria-label="Toggle dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero-section">
+        <div class="hero-bg">
+            <div class="float-shape"></div>
+            <div class="float-shape"></div>
+            <div class="float-shape"></div>
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <p class="text-accent-earth text-sm font-bold uppercase tracking-[6px] mb-6" data-en="PORTFOLIO" data-vi="PORTFOLIO">PORTFOLIO</p>
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">CHU TRIEU CHINH</h1>
+            <div class="text-xl md:text-2xl text-white/70 font-medium mb-8">
+                <span class="typewriter" data-en="Senior Backend Engineer · ERP · E-commerce" data-vi="Kỹ sư Backend Cao cấp · ERP · Thương mại điện tử">Senior Backend Engineer · ERP · E-commerce</span>
+            </div>
+            <p class="text-white/50 max-w-xl mx-auto text-sm leading-relaxed mb-10" data-en="5+ years building scalable backend systems, ERP platforms, and e-commerce solutions for companies across Vietnam and Europe." data-vi="Hơn 5 năm xây dựng hệ thống backend có khả năng mở rộng, nền tảng ERP và giải pháp thương mại điện tử cho doanh nghiệp tại Việt Nam và Châu Âu.">5+ years building scalable backend systems, ERP platforms, and e-commerce solutions for companies across Vietnam and Europe.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects-section" class="cta-btn cta-btn-primary" data-en="Explore Projects" data-vi="Khám phá dự án">Explore Projects</a>
+                <a href="index.html" class="cta-btn cta-btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;" data-en="View Full CV" data-vi="Xem CV đầy đủ">View Full CV</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+    </section>
+
+    <!-- ========== STATS BAR ========== -->
+    <div class="stats-bar reveal">
+        <div class="container max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-5">
+                <div class="stat-item">
+                    <div class="stat-number"><span class="counter" data-target="5">0</span>+</div>
+                    <div class="stat-label" data-en="Years Experience" data-vi="Năm kinh nghiệm">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><span class="counter" data-target="8">0</span></div>
+                    <div class="stat-label" data-en="Key Projects" data-vi="Dự án chính">Key Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+                    <div class="stat-label" data-en="Companies" data-vi="Công ty">Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1K+</div>
+                    <div class="stat-label" data-en="OSS Downloads" data-vi="Lượt tải OSS">OSS Downloads</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">835</div>
+                    <div class="stat-label" data-en="TOEIC Score" data-vi="Điểm TOEIC">TOEIC Score</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TIMELINE JOURNEY ========== -->
+    <section class="container max-w-5xl mx-auto px-6 py-20">
+        <div class="text-center mb-16 reveal">
+            <p class="text-accent-earth text-xs font-bold uppercase tracking-[4px] mb-3" data-en="CAREER PATH" data-vi="HÀNH TRÌNH SỰ NGHIỆP">CAREER PATH</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary-text" data-en="My Journey" data-vi="Hành trình của tôi">My Journey</h2>
+        </div>
+        <div class="timeline-journey">
+            <div class="timeline-line hidden md:block"></div>
+
+            <div class="timeline-node reveal-left">
+                <div class="timeline-node-content" onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'})">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-2xl font-black text-accent-moss">WIR GROUP</span>
+                        <span class="text-xs font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded" data-en="Current" data-vi="Hiện tại">Current</span>
+                    </div>
+                    <p class="text-sm font-semibold text-accent-wood" data-en="Senior Backend / E-Commerce Engineer" data-vi="Kỹ sư Backend / TMĐT Cao cấp">Senior Backend / E-Commerce Engineer</p>
+                    <p class="text-xs text-secondary-text mt-1" data-en="Apr 2023 – Present · 4 Projects" data-vi="Tháng 4/2023 – Hiện tại · 4 dự án">Apr 2023 – Present · 4 Projects</p>
+                </div>
+                <div class="timeline-spacer"></div>
+                <div class="timeline-node-dot"></div>
+            </div>
+
+            <div class="timeline-node reveal-right">
+                <div class="timeline-node-content" onclick="document.getElementById('viettel-section').scrollIntoView({behavior:'smooth'})">
+                    <span class="text-2xl font-black text-accent-moss">Viettel Software</span>
+                    <p class="text-sm font-semibold text-accent-wood" data-en="Middle Odoo Developer" data-vi="Lập trình viên Odoo Trung cấp">Middle Odoo Developer</p>
+                    <p class="text-xs text-secondary-text mt-1" data-en="May 2022 – Apr 2023 · 2 Projects" data-vi="Tháng 5/2022 – Tháng 4/2023 · 2 dự án">May 2022 – Apr 2023 · 2 Projects</p>
+                </div>
+                <div class="timeline-spacer"></div>
+                <div class="timeline-node-dot"></div>
+            </div>
+
+            <div class="timeline-node reveal-left">
+                <div class="timeline-node-content" onclick="document.getElementById('vti-section').scrollIntoView({behavior:'smooth'})">
+                    <span class="text-2xl font-black text-accent-moss">VTI Corporation</span>
+                    <p class="text-sm font-semibold text-accent-wood" data-en="Junior Odoo Developer" data-vi="Lập trình viên Odoo Sơ cấp">Junior Odoo Developer</p>
+                    <p class="text-xs text-secondary-text mt-1" data-en="Mar 2020 – May 2022 · 1 Project" data-vi="Tháng 3/2020 – Tháng 5/2022 · 1 dự án">Mar 2020 – May 2022 · 1 Project</p>
+                </div>
+                <div class="timeline-spacer"></div>
+                <div class="timeline-node-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROJECT SHOWCASE ========== -->
+    <section id="projects-section" class="container max-w-5xl mx-auto px-6 pb-20">
+        <div class="text-center mb-16 reveal">
+            <p class="text-accent-earth text-xs font-bold uppercase tracking-[4px] mb-3" data-en="WORK" data-vi="DỰ ÁN">WORK</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary-text" data-en="Featured Projects" data-vi="Dự án nổi bật">Featured Projects</h2>
+        </div>
+
+        <div class="space-y-8">
+            <!-- BoxBaer -->
+            <a href="projects/boxbaer.html" class="project-showcase-card reveal-left block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">WIR GROUP</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="BoxBaer – Cross-Border Purchasing Platform" data-vi="BoxBaer – Nền tảng Mua hộ Quốc tế">BoxBaer – Cross-Border Purchasing Platform</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Full-stack platform enabling B2B customers to order products from Amazon and European e-commerce websites with automated order processing pipeline." data-vi="Nền tảng full-stack cho phép khách hàng B2B đặt sản phẩm từ Amazon và các website TMĐT Châu Âu với quy trình xử lý đơn hàng tự động.">Full-stack platform enabling B2B customers to order products from Amazon and European e-commerce websites with automated order processing pipeline.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">-80% workload</span>
+                        <span class="project-metric-pill highlight">~10K EUR/mo</span>
+                        <span class="project-metric-pill">-60% dev time</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">FastAPI</span>
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Claude Code</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+
+            <!-- Shopify -->
+            <a href="projects/shopify-ecommerce.html" class="project-showcase-card reverse reveal-right block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">WIR GROUP</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="Shopify E-commerce Optimization" data-vi="Tối ưu hóa Cửa hàng Shopify">Shopify E-commerce Optimization</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Optimized multiple Shopify stores for European markets with UI/UX improvements, SEO enhancements, and mobile responsiveness." data-vi="Tối ưu nhiều cửa hàng Shopify cho thị trường Châu Âu với cải thiện UI/UX, nâng cao SEO và responsive mobile.">Optimized multiple Shopify stores for European markets with UI/UX improvements, SEO enhancements, and mobile responsiveness.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">+3% conversion</span>
+                        <span class="project-metric-pill highlight">~40K EUR/mo</span>
+                        <span class="project-metric-pill">+30% returning</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Shopify</span>
+                        <span class="tech-pill">Liquid</span>
+                        <span class="tech-pill">JavaScript</span>
+                        <span class="tech-pill">SEO</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+
+            <!-- Healthcare -->
+            <a href="projects/healthcare-websites.html" class="project-showcase-card reveal-left block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">WIR GROUP</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="Healthcare Brand Websites" data-vi="Website Thương hiệu Sức khỏe">Healthcare Brand Websites</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Developed and maintained e-commerce websites for 5+ European healthcare brands entering the Vietnamese market, including marketing campaign tools." data-vi="Phát triển và bảo trì website TMĐT cho 5+ thương hiệu sức khỏe Châu Âu thâm nhập thị trường Việt Nam, bao gồm công cụ chiến dịch marketing.">Developed and maintained e-commerce websites for 5+ European healthcare brands entering the Vietnamese market, including marketing campaign tools.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">SEO &lt;40→&gt;70</span>
+                        <span class="project-metric-pill highlight">~5K visitors/mo</span>
+                        <span class="project-metric-pill">+3% conversion</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">WordPress</span>
+                        <span class="tech-pill">Magento</span>
+                        <span class="tech-pill">VueJS</span>
+                        <span class="tech-pill">PHP</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+
+            <!-- ERP Odoo -->
+            <a href="projects/erp-odoo.html" class="project-showcase-card reverse reveal-right block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">WIR GROUP</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="ERP System Development (Odoo)" data-vi="Phát triển Hệ thống ERP (Odoo)">ERP System Development (Odoo)</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Enhanced core Odoo ERP modules, integrated Amazon FBM & Sendcloud, and led the full system upgrade from v15 to v16." data-vi="Nâng cấp module lõi Odoo ERP, tích hợp Amazon FBM & Sendcloud và chủ trì nâng cấp hệ thống từ v15 lên v16.">Enhanced core Odoo ERP modules, integrated Amazon FBM & Sendcloud, and led the full system upgrade from v15 to v16.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">+30% performance</span>
+                        <span class="project-metric-pill highlight">-40% manual tasks</span>
+                        <span class="project-metric-pill">-60% lookup time</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Odoo</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">BackboneJS</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== VIETTEL SECTION ========== -->
+    <section id="viettel-section" class="container max-w-5xl mx-auto px-6 pb-20">
+        <div class="space-y-8">
+            <!-- VSS Finance -->
+            <a href="projects/vss-finance.html" class="project-showcase-card reveal-left block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">VIETTEL SOFTWARE</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="VSS Finance Internal System" data-vi="Hệ thống Tài chính Nội bộ VSS">VSS Finance Internal System</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Led a team of 3 to build an internal financial system tracking project costs, revenue, and profitability across business units." data-vi="Quản lý nhóm 3 người xây dựng hệ thống tài chính nội bộ theo dõi chi phí dự án, doanh thu và lợi nhuận trên các đơn vị kinh doanh.">Led a team of 3 to build an internal financial system tracking project costs, revenue, and profitability across business units.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">Team Lead</span>
+                        <span class="project-metric-pill highlight">4 custom modules</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Odoo</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+
+            <!-- Viettel Enterprise -->
+            <a href="projects/viettel-enterprise.html" class="project-showcase-card reverse reveal-right block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">VIETTEL SOFTWARE</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="Viettel Enterprise Support System" data-vi="Hệ thống Hỗ trợ Doanh nghiệp Viettel">Viettel Enterprise Support System</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Developed internal financial management platforms, CMS solutions, and automation tools for Viettel Group's digital transformation." data-vi="Phát triển nền tảng quản lý tài chính nội bộ, giải pháp CMS và công cụ tự động hóa cho chuyển đổi số Tập đoàn Viettel.">Developed internal financial management platforms, CMS solutions, and automation tools for Viettel Group's digital transformation.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">CMS + Automation</span>
+                        <span class="project-metric-pill highlight" data-en="Finance Platform" data-vi="Nền tảng tài chính">Finance Platform</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Odoo</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== VTI SECTION ========== -->
+    <section id="vti-section" class="container max-w-5xl mx-auto px-6 pb-20">
+        <div class="space-y-8">
+            <a href="projects/vti-management.html" class="project-showcase-card reveal-left block">
+                <div class="project-accent-bar"></div>
+                <div class="project-card-body">
+                    <span class="project-company-badge">VTI CORPORATION</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary-text mb-2" data-en="VTI Management System" data-vi="Hệ thống Quản lý VTI">VTI Management System</h3>
+                    <p class="text-secondary-text text-sm mb-4" data-en="Comprehensive ERP system with 7 HR and finance modules, plus CI/CD pipeline implementation for automated quality checks." data-vi="Hệ thống ERP toàn diện với 7 module nhân sự và tài chính, cùng triển khai CI/CD pipeline cho kiểm tra chất lượng tự động.">Comprehensive ERP system with 7 HR and finance modules, plus CI/CD pipeline implementation for automated quality checks.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-metric-pill">7 ERP modules</span>
+                        <span class="project-metric-pill highlight">CI/CD Pipeline</span>
+                        <span class="project-metric-pill" data-en="2 years" data-vi="2 năm">2 years</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Odoo</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Docker</span>
+                        <span class="tech-pill">GitLab CI</span>
+                    </div>
+                    <div class="project-explore" data-en="Explore Project →" data-vi="Khám phá dự án →">Explore Project →</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== OPEN SOURCE ========== -->
+    <section class="container max-w-5xl mx-auto px-6 pb-20">
+        <div class="text-center mb-12 reveal">
+            <p class="text-accent-earth text-xs font-bold uppercase tracking-[4px] mb-3" data-en="OPEN SOURCE" data-vi="MÃ NGUỒN MỞ">OPEN SOURCE</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary-text" data-en="Community Contributions" data-vi="Đóng góp cộng đồng">Community Contributions</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="https://apps.odoo.com/apps/modules/15.0/dynamic_navbar_color" target="_blank" class="oss-card reveal block" style="text-decoration:none; color:inherit;">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                    <span class="text-xs font-bold text-secondary-text uppercase tracking-wider">UI/UX</span>
+                </div>
+                <h4 class="font-bold text-primary-text mb-2">Dynamic Navbar Color</h4>
+                <p class="text-sm text-secondary-text" data-en="Customize Odoo navbar color dynamically. Supports versions 12–15." data-vi="Tùy chỉnh màu navbar Odoo linh hoạt. Hỗ trợ phiên bản 12–15.">Customize Odoo navbar color dynamically. Supports versions 12–15.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">JS</span>
+                    <span class="tech-pill">XML</span>
+                </div>
+            </a>
+            <a href="https://apps.odoo.com/apps/modules/15.0/dynamic_list_view" target="_blank" class="oss-card reveal block" style="text-decoration:none; color:inherit; transition-delay: 0.1s;">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    <span class="text-xs font-bold text-secondary-text uppercase tracking-wider">UI/UX</span>
+                </div>
+                <h4 class="font-bold text-primary-text mb-2">Dynamic List View</h4>
+                <p class="text-sm text-secondary-text" data-en="Enhanced list views with dynamic column customization." data-vi="Nâng cao danh sách với tùy chỉnh cột linh hoạt.">Enhanced list views with dynamic column customization.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">JS</span>
+                    <span class="tech-pill">XML</span>
+                </div>
+            </a>
+            <a href="https://apps.odoo.com/apps/modules/15.0/group_collapse" target="_blank" class="oss-card reveal block" style="text-decoration:none; color:inherit; transition-delay: 0.2s;">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+                    <span class="text-xs font-bold text-secondary-text uppercase tracking-wider">UI/UX</span>
+                </div>
+                <h4 class="font-bold text-primary-text mb-2">Group Collapse</h4>
+                <p class="text-sm text-secondary-text" data-en="Collapse/expand functionality for grouped list views." data-vi="Thu gọn/mở rộng cho danh sách phân nhóm.">Collapse/expand functionality for grouped list views.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">JS</span>
+                    <span class="tech-pill">XML</span>
+                </div>
+            </a>
+        </div>
+        <div class="text-center mt-8 reveal">
+            <a href="projects/odoo-modules.html" class="inline-flex items-center gap-2 text-accent-moss font-bold hover:text-accent-earth transition-colors" data-en="View all modules →" data-vi="Xem tất cả module →">View all modules →</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER CTA ========== -->
+    <section class="py-20 text-center reveal" style="background: linear-gradient(135deg, rgba(74,93,78,0.05) 0%, rgba(166,124,82,0.05) 100%);">
+        <div class="container max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary-text mb-4" data-en="Interested in working together?" data-vi="Muốn hợp tác cùng nhau?">Interested in working together?</h2>
+            <p class="text-secondary-text mb-8" data-en="Check out my full resume for contact details and complete work history." data-vi="Xem CV đầy đủ để biết thông tin liên hệ và lịch sử công việc chi tiết.">Check out my full resume for contact details and complete work history.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="index.html" class="cta-btn cta-btn-primary" data-en="View Full CV" data-vi="Xem CV đầy đủ">View Full CV</a>
+                <a href="mailto:chutrieuchinh98@gmail.com" class="cta-btn cta-btn-outline" data-en="Get in Touch" data-vi="Liên hệ">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 text-sm text-secondary-text">
+        <p>© 2025 Chu Trieu Chinh · <span data-en="Built with passion" data-vi="Xây dựng với đam mê">Built with passion</span></p>
+    </footer>
+
+    <script src="assets/js/shared.js"></script>
+    <script>
+        // Scroll reveal
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // Nav background on scroll
+        function initNavScroll() {
+            const nav = document.getElementById('navMenu');
+            const heroH = document.querySelector('.hero-section').offsetHeight;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > heroH - 80) {
+                    nav.style.background = 'var(--card-bg)';
+                    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+                    nav.querySelectorAll('a, button').forEach(el => {
+                        if (!el.id) el.style.color = '';
+                    });
+                    const backLink = nav.querySelector('a[href="index.html"]');
+                    if (backLink) backLink.style.color = 'var(--accent-moss)';
+                    const langBtn = document.getElementById('langToggle');
+                    if (langBtn) {
+                        langBtn.style.borderColor = 'var(--accent-moss)';
+                        langBtn.style.color = 'var(--accent-moss)';
+                    }
+                } else {
+                    nav.style.background = 'transparent';
+                    nav.style.boxShadow = 'none';
+                    const backLink = nav.querySelector('a[href="index.html"]');
+                    if (backLink) backLink.style.color = 'white';
+                    const langBtn = document.getElementById('langToggle');
+                    if (langBtn) {
+                        langBtn.style.borderColor = 'rgba(255,255,255,0.4)';
+                        langBtn.style.color = 'white';
+                    }
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initReveal();
+            initNavScroll();
+        });
+    </script>
+</body>
+</html>
