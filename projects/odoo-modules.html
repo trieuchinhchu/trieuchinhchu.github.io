@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Source Odoo Modules | CHU TRIEU CHINH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/shared.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-color': '#f8f8f4', 'primary-text': '#2d3436', 'secondary-text': '#636e72',
+                        'accent-wood': '#a67c52', 'accent-moss': '#4a5d4e', 'accent-earth': '#c5a059', 'card-bg': '#ffffff',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { 'custom': '12px' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased" data-theme="light">
+    <div class="scroll-progress"></div>
+    <nav class="nav-menu always-visible" id="navMenu">
+        <div class="container max-w-5xl mx-auto px-4 sm:px-5 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="back-btn no-print">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span data-en="Back to Resume" data-vi="Quay lại CV">Back to Resume</span>
+                </a>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="langToggle" class="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-lg border-2 border-accent-moss text-accent-moss hover:bg-accent-moss hover:text-white transition-all">EN</button>
+                    <button id="darkModeToggle" class="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 transition-all" aria-label="Toggle dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container max-w-5xl mx-auto p-5 md:p-10">
+        <div class="project-hero mb-10">
+            <p class="text-sm font-semibold text-accent-wood uppercase tracking-wider mb-2" data-en="PERSONAL PROJECT" data-vi="DỰ ÁN CÁ NHÂN">PERSONAL PROJECT</p>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-accent-moss mb-2" data-en="Open Source Odoo Modules" data-vi="Các Module Odoo Mã nguồn mở">Open Source Odoo Modules</h1>
+            <p class="text-secondary-text" data-en="Odoo Apps Store · Versions 12 to 15" data-vi="Odoo Apps Store · Phiên bản 12 đến 15">Odoo Apps Store · Versions 12 to 15</p>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </div>
+                <div class="metric-value">~<span class="counter" data-target="1000">0</span>+</div>
+                <div class="metric-label" data-en="Total Downloads" data-vi="Tổng lượt tải">Total Downloads</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                </div>
+                <div class="metric-value"><span class="counter" data-target="3">0</span></div>
+                <div class="metric-label" data-en="Published Modules" data-vi="Module xuất bản">Published Modules</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="metric-value" data-en="Open Source" data-vi="Mã nguồn mở">Open Source</div>
+                <div class="metric-label" data-en="Community Contribution" data-vi="Đóng góp cộng đồng">Community Contribution</div>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="card detail-section p-8 mb-6">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span data-en="Project Overview" data-vi="Tổng quan dự án">Project Overview</span>
+            </h3>
+            <p class="text-primary-text leading-relaxed" data-en="Developed and published several open-source modules on the Odoo Apps Store aimed at improving UI usability and user experience. These modules have been downloaded by Odoo users worldwide, contributing to the open-source community and demonstrating deep knowledge of the Odoo framework's frontend and backend architecture." data-vi="Phát triển và xuất bản các module mã nguồn mở trên Odoo Apps Store nhằm cải thiện khả năng sử dụng giao diện và trải nghiệm người dùng. Các module đã được người dùng Odoo trên toàn thế giới tải về, đóng góp cho cộng đồng mã nguồn mở và thể hiện kiến thức sâu về kiến trúc frontend và backend của framework Odoo.">Developed and published several open-source modules on the Odoo Apps Store aimed at improving UI usability and user experience. These modules have been downloaded by Odoo users worldwide, contributing to the open-source community and demonstrating deep knowledge of the Odoo framework's frontend and backend architecture.</p>
+        </div>
+
+        <!-- Published Modules -->
+        <div class="card detail-section p-8 mb-6">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span data-en="Published Modules" data-vi="Các Module đã xuất bản">Published Modules</span>
+            </h3>
+            <div class="space-y-4">
+                <a href="https://apps.odoo.com/apps/modules/15.0/dynamic_navbar_color" target="_blank" class="contribution-item block hover:no-underline">
+                    <div class="flex items-start gap-3">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-blue-100 text-blue-700 mt-0.5 shrink-0">UI/UX</span>
+                        <div>
+                            <p class="text-primary-text font-bold">Dynamic Navbar Color</p>
+                            <p class="text-sm text-secondary-text mt-1" data-en="Allows users to customize the Odoo navbar color dynamically. Supports Odoo versions 12–15." data-vi="Cho phép người dùng tùy chỉnh màu thanh navbar Odoo linh hoạt. Hỗ trợ Odoo phiên bản 12–15.">Allows users to customize the Odoo navbar color dynamically. Supports Odoo versions 12–15.</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-1 text-secondary-text"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                </a>
+                <a href="https://apps.odoo.com/apps/modules/15.0/dynamic_list_view" target="_blank" class="contribution-item block hover:no-underline">
+                    <div class="flex items-start gap-3">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-green-100 text-green-700 mt-0.5 shrink-0">UI/UX</span>
+                        <div>
+                            <p class="text-primary-text font-bold">Dynamic List View</p>
+                            <p class="text-sm text-secondary-text mt-1" data-en="Enhances Odoo list views with dynamic column customization and improved data visualization." data-vi="Nâng cao giao diện danh sách Odoo với tùy chỉnh cột linh hoạt và trực quan hóa dữ liệu tốt hơn.">Enhances Odoo list views with dynamic column customization and improved data visualization.</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-1 text-secondary-text"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                </a>
+                <a href="https://apps.odoo.com/apps/modules/15.0/group_collapse" target="_blank" class="contribution-item block hover:no-underline">
+                    <div class="flex items-start gap-3">
+                        <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-purple-100 text-purple-700 mt-0.5 shrink-0">UI/UX</span>
+                        <div>
+                            <p class="text-primary-text font-bold">Group Collapse</p>
+                            <p class="text-sm text-secondary-text mt-1" data-en="Adds collapse/expand functionality to grouped list views, improving navigation in large datasets." data-vi="Thêm chức năng thu gọn/mở rộng cho danh sách phân nhóm, cải thiện điều hướng trong tập dữ liệu lớn.">Adds collapse/expand functionality to grouped list views, improving navigation in large datasets.</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-1 text-secondary-text"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="card detail-section p-8 mb-6">
+            <h3 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <span data-en="Tech Stack" data-vi="Công nghệ sử dụng">Tech Stack</span>
+            </h3>
+            <div class="flex flex-wrap gap-3">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Odoo</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">XML</span>
+                <span class="tech-badge">QWeb</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-10 no-print">
+            <a href="vti-management.html" class="project-nav-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <span data-en="Prev: VTI Management" data-vi="Trước: VTI Management">Prev: VTI Management</span>
+            </a>
+            <a href="../index.html" class="project-nav-btn">
+                <span data-en="Back to Resume" data-vi="Quay lại CV">Back to Resume</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </a>
+        </div>
+    </div>
+
+    <footer class="text-center py-8 text-sm text-secondary-text"><p>© 2025 Chu Trieu Chinh</p></footer>
+    <script src="../assets/js/shared.js"></script>
+</body>
+</html>
