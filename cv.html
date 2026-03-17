@@ -1,0 +1,369 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV – CHU TRIEU CHINH | Senior Backend Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/shared.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-color': '#f8f8f4', 'primary-text': '#2d3436', 'secondary-text': '#636e72',
+                        'accent-wood': '#a67c52', 'accent-moss': '#4a5d4e', 'accent-earth': '#c5a059', 'card-bg': '#ffffff',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { 'custom': '12px' }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Force white background */
+        body { background-color: #ffffff !important; }
+        [data-theme="dark"] body { background-color: #1a1a1a !important; }
+
+        /* Clean CV overrides — no shadows, no borders, no card effects */
+        .cv-clean .card,
+        .cv-clean section,
+        .cv-clean .animated-section {
+            background: none !important;
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+            opacity: 1 !important;
+            animation: none !important;
+            transform: none !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .cv-clean .card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .cv-clean .section-title {
+            font-size: 1.15rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--accent-moss);
+            margin-bottom: 16px;
+        }
+
+        .cv-clean header {
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent-moss);
+            margin-bottom: 24px;
+        }
+
+        .cv-clean header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            box-shadow: none !important;
+        }
+
+        .cv-clean .project-item {
+            cursor: default;
+        }
+
+        .cv-clean .project-item:hover {
+            background: none !important;
+        }
+
+        .cv-clean .project-item:hover .timeline-dot {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .cv-clean .project-item .project-details {
+            max-height: none;
+            overflow: visible;
+        }
+
+        .cv-clean .tag:hover {
+            transform: none;
+            background: #f1f2f6;
+            color: var(--secondary-text);
+        }
+
+        [data-theme="dark"] .cv-clean .tag:hover {
+            background: #3a3a3a;
+        }
+
+        .cv-clean .impact-box {
+            border-radius: 6px;
+        }
+
+        .cv-clean .social-link:hover {
+            transform: none;
+        }
+
+        .cv-clean .progress-fill {
+            transition: none;
+        }
+
+        /* Loading state */
+        .cv-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            gap: 16px;
+            color: var(--secondary-text);
+        }
+
+        .cv-loading .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: var(--accent-moss);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        [data-theme="dark"] .cv-loading .spinner {
+            border-color: rgba(255,255,255,0.1);
+            border-top-color: var(--accent-moss);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Print styles for clean CV */
+        @media print {
+            .nav-menu { display: none !important; }
+            .scroll-progress { display: none !important; }
+            body { background: white !important; }
+            .cv-clean .card, .cv-clean section {
+                page-break-inside: avoid;
+            }
+            .cv-clean .project-item {
+                page-break-inside: avoid;
+            }
+            @page { margin: 12mm 10mm; size: A4; }
+        }
+    </style>
+</head>
+<body class="antialiased" data-theme="light">
+    <div class="scroll-progress"></div>
+
+    <!-- Top Nav -->
+    <nav class="nav-menu always-visible" id="navMenu">
+        <div class="container max-w-5xl mx-auto px-4 sm:px-5 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="back-btn no-print">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <span data-en="Back to Home" data-vi="Quay lại Trang chủ">Back to Home</span>
+                </a>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button id="langToggle" class="px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-lg border-2 border-accent-moss text-accent-moss hover:bg-accent-moss hover:text-white transition-all">EN</button>
+                    <button id="darkModeToggle" class="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 transition-all" aria-label="Toggle dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CV Content Container -->
+    <div id="cv-container" class="container max-w-5xl mx-auto p-5 md:p-10">
+        <div class="cv-loading" id="cvLoading">
+            <div class="spinner"></div>
+            <p data-en="Loading CV..." data-vi="Đang tải CV...">Loading CV...</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.getAttribute('data-' + lang);
+                } else {
+                    el.textContent = el.getAttribute('data-' + lang);
+                }
+            });
+            document.getElementById('langToggle').textContent = lang === 'en' ? 'VI' : 'EN';
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.querySelector('.sun-icon').classList.toggle('hidden');
+            document.querySelector('.moon-icon').classList.toggle('hidden');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        }
+
+        function cleanCV(clone) {
+            // Remove no-print elements
+            clone.querySelectorAll('.no-print').forEach(el => el.remove());
+
+            // Remove project-website sections (external links)
+            clone.querySelectorAll('.project-website').forEach(el => el.remove());
+
+            // Remove all data-href (click navigation) attributes
+            clone.querySelectorAll('[data-href]').forEach(el => el.removeAttribute('data-href'));
+
+            // Convert project title links back to plain text
+            clone.querySelectorAll('.project-item h5 a').forEach(a => {
+                const span = document.createElement('span');
+                // Copy data attributes for i18n
+                Array.from(a.attributes).forEach(attr => {
+                    if (attr.name.startsWith('data-')) {
+                        span.setAttribute(attr.name, attr.value);
+                    }
+                });
+                span.textContent = a.textContent;
+                a.replaceWith(span);
+            });
+
+            // Resolve counter values to their target
+            clone.querySelectorAll('.counter').forEach(c => {
+                const target = c.getAttribute('data-target');
+                if (target) {
+                    const num = parseInt(target);
+                    c.textContent = num >= 1000 ? num.toLocaleString() : num;
+                }
+            });
+
+            // Remove filter buttons in skills section
+            clone.querySelectorAll('.filter-btn').forEach(el => {
+                const parent = el.closest('.flex');
+                if (parent) parent.remove();
+            });
+            const filterControls = clone.querySelector('.filter-controls');
+            if (filterControls) filterControls.remove();
+
+            // Strip all inline styles (box-shadow on avatar, bg-color vars, etc.)
+            clone.querySelectorAll('[style]').forEach(el => {
+                el.removeAttribute('style');
+            });
+
+            // Make all skill categories visible
+            clone.querySelectorAll('[data-category]').forEach(el => {
+                el.style.display = 'block';
+            });
+
+            // Expand all collapsed projects
+            clone.querySelectorAll('.project-item.collapsed').forEach(el => {
+                el.classList.remove('collapsed');
+            });
+
+            // Remove social links section
+            clone.querySelectorAll('.social-link').forEach(el => {
+                const parent = el.parentElement;
+                if (parent) parent.remove();
+            });
+
+            // Reorder: move Technical Skills before Certifications (after Experience & Projects)
+            const mainEl = clone.querySelector('main');
+            if (mainEl) {
+                const skillsSection = mainEl.querySelector('#skills');
+                const certsSection = mainEl.querySelector('#certifications');
+                if (skillsSection && certsSection) {
+                    mainEl.insertBefore(skillsSection, certsSection);
+                }
+            }
+
+            // Set progress bar widths immediately
+            clone.querySelectorAll('.progress-fill').forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                if (progress) bar.style.width = progress + '%';
+            });
+
+            return clone;
+        }
+
+        async function loadCV() {
+            try {
+                const response = await fetch('index.html');
+                const html = await response.text();
+
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const resumeContent = doc.getElementById('resume-content');
+                if (!resumeContent) {
+                    throw new Error('Could not find resume content');
+                }
+
+                const cleaned = cleanCV(resumeContent);
+                cleaned.classList.add('cv-clean');
+                cleaned.removeAttribute('id');
+
+                const container = document.getElementById('cv-container');
+                container.innerHTML = '';
+                container.appendChild(cleaned);
+
+                // Animate progress bars after a tick
+                requestAnimationFrame(() => {
+                    container.querySelectorAll('.progress-fill[data-progress]').forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-progress') + '%';
+                    });
+                });
+
+                // Apply current language to loaded content
+                if (currentLang !== 'en') {
+                    switchLanguage(currentLang);
+                }
+
+            } catch (err) {
+                console.error('Failed to load CV:', err);
+                document.getElementById('cv-container').innerHTML = `
+                    <div class="text-center py-20">
+                        <p class="text-secondary-text mb-4">Failed to load CV content.</p>
+                        <a href="index.html" class="text-accent-moss font-medium hover:underline">← Go to full resume</a>
+                    </div>`;
+            }
+        }
+
+        // Scroll progress
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            const bar = document.querySelector('.scroll-progress');
+            if (bar) bar.style.width = progress + '%';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved preferences
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+
+            document.body.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.querySelector('.sun-icon').classList.add('hidden');
+                document.querySelector('.moon-icon').classList.remove('hidden');
+            }
+
+            currentLang = savedLang;
+            if (savedLang === 'vi') {
+                switchLanguage('vi');
+            }
+
+            // Setup event listeners
+            document.getElementById('langToggle').addEventListener('click', () => {
+                switchLanguage(currentLang === 'en' ? 'vi' : 'en');
+            });
+
+            document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+
+            window.addEventListener('scroll', updateScrollProgress);
+            updateScrollProgress();
+
+            // Load and render CV
+            loadCV();
+        });
+    </script>
+</body>
+</html>
