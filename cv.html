@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <title>CV – CHU TRIEU CHINH | Senior Backend Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/shared.css">
@@ -137,14 +138,43 @@
         @media print {
             .nav-menu { display: none !important; }
             .scroll-progress { display: none !important; }
-            body { background: white !important; }
-            .cv-clean .card, .cv-clean section {
-                page-break-inside: avoid;
+            body { background: white !important; padding: 0 !important; }
+            .container { padding: 0 10px !important; max-width: 100% !important; }
+
+            .cv-clean header {
+                border-bottom: none !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
             }
-            .cv-clean .project-item {
-                page-break-inside: avoid;
+            .cv-clean header .text-center {
+                text-align: left !important;
             }
-            @page { margin: 12mm 10mm; size: A4; }
+            .cv-clean header .justify-center {
+                justify-content: flex-start !important;
+            }
+
+            /* Let browser cut pages naturally — override shared.css */
+            * {
+                opacity: 1 !important;
+                animation: none !important;
+                transition: none !important;
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            .cv-clean .timeline-dot {
+                left: -31px !important;
+            }
+
+            .p-8 {
+                padding: 1rem !important;
+            }
+            .text-primary-text {
+                font-size: 14px !important;
+            }
+
+            @page { margin: 10mm; size: A4; }
         }
     </style>
 </head>
